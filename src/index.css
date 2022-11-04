@@ -1,13 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: "Noto Sans", sans-serif;
+}
+a {
+    display: inline-block;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.nav-link {
+    @apply inline-block relative text-white hover:text-white/70 text-[14px] mx-[18px] py-3 font-medium transition before:w-[86%] before:h-[5px] before:hover:bg-white/70 before:rounded-full before:absolute before:left-[7%] before:bottom-[-2px];
+}
+.sidebar-item {
+    @apply text-[#202124] text-[13px] hover:bg-gray-100 block   py-1 pr-2   rounded-r-full;
+}
+.tooltip {
+    @apply hidden absolute left-0  text-white  bg-black/50    p-[4px] rounded-sm whitespace-nowrap text-[9px];
+}
+.tooltip-bottom {
+    @apply bottom-[-40px];
+}
+.tooltip-top {
+    @apply bottom-[50px];
+}
+.code {
+    @apply px-1 py-[1px] bg-gray-100 text-gray-800 text-sm font-semibold tracking-wide;
+}
+.table-link {
+    @apply text-blue-600 tracking-wider font-medium;
+}
+.table-cols {
+    @apply grid-cols-[minmax(85px,max-content)_minmax(125px,max-content)_1fr];
+}
+.active-scroll-spy {
+    @apply text-blue-600 font-medium;
 }
