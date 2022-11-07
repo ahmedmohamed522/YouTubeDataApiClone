@@ -1,148 +1,46 @@
-import React, { useCallback, useRef } from "react";
-import Breadcramp from "./Breadcramp";
-
-import { FaRegBookmark } from "react-icons/fa";
-import { IoMdArrowDropdown } from "react-icons/io";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { IoLinkOutline } from "react-icons/io5";
-import { BsPlusLg } from "react-icons/bs";
 import ScrollSpy from "react-ui-scrollspy";
-import { useState } from "react";
 import { useEffect } from "react";
-import CopiedAlert from "./CopiedAlert";
-import { useCloseOnClickOutside } from "../../hooks/useCloseOnClickOutside";
+import { useLike } from "../../../hooks/useLike";
+import TakeOpinion from "../../TakeOpinion";
+import Breadcramp from ".././Breadcramp";
+import RightSide from "../../RightSide";
 
-const Article = ({ isSidebarVisible }) => {
-    const [showAlert, setShowAlert] = useState(false);
-    const [dropdown, setDropdown] = useState(false);
-    const [userFocus, setUserFocus] = useState(false);
-    const [categoryNameValue, setCategoryNameValue] = useState("");
-    const [inputError, setInputError] = useState(false);
-    const [submit, setSubmit] = useState(false);
+import CopiedAlert from ".././CopiedAlert";
 
-    const dropdownRef = useRef(null);
-    const inputRef = useRef(null);
-    const inputHandler = () => {
-        inputRef.current?.focus();
-    };
-    const closeDropdown = useCallback(() => {
-        setUserFocus(false);
-        setDropdown(false);
-        setInputError(false);
-        setSubmit(false);
-    }, []);
+import { useSavePagesAndCreateCategories } from "../../../hooks/useSavePagesAndCreateCategories";
+import Bookmark from "../Bookmark";
 
-    const addCategory = (val) => {
-        if (val.trim().length === 0) setInputError(true);
-    };
-    useCloseOnClickOutside(dropdownRef, closeDropdown);
+const ReferenceArticle = ({ isSidebarVisible, navVisible }) => {
+    const { liked, disliked, clickLike, removeLike, clickDislike, removeDislike } = useLike();
+    const { showAlert, alertText, alertHandler, closeAlert } = useSavePagesAndCreateCategories();
 
-    const alertHandler = () => {
-        setShowAlert(true);
-    };
     useEffect(() => {
         const timer = setTimeout(() => {
-            setShowAlert(false);
+            closeAlert();
         }, 5000);
 
         return () => {
             clearTimeout(timer);
         };
-    }, [showAlert]);
-    useEffect(() => {
-        inputHandler();
-    }, [userFocus]);
+    }, [showAlert, closeAlert]);
     return (
         <article
             className={`flex-1  ${
                 isSidebarVisible ? "md:ml-[294px]" : "md:ml-[194px]"
-            } xl:mr-[192px] max-w-[936px] p-10 bg-white  shadow-lg md:border border-gray-200 rounded `}
+            } xl:mr-[192px] max-w-[936px] p-6 md:p-10 bg-white  shadow-lg md:border border-gray-200 rounded `}
         >
-            <Breadcramp />
+            <Breadcramp opinions={{ liked, disliked, clickLike, removeLike, clickDislike, removeDislike }} />
+
             {/* Description */}
             <div className="text-3xl flex items-center gap-3 mb-4">
                 <h1 className="text-gray-800">API Reference</h1>
-                <div className="relative" ref={dropdownRef}>
-                    <button
-                        onClick={() => {
-                            setDropdown(!dropdown);
-                        }}
-                        className="relative flex gap-1 p-2 px-1.5 border border-gray-300  text-gray-700 rounded hover:text-gray-900 hover:bg-gray-100 transition-all"
-                    >
-                        <FaRegBookmark size={18} />
-                        <IoMdArrowDropdown size={18} />
-                    </button>
-                    <div
-                        className={`${
-                            dropdown ? "block" : "hidden"
-                        } absolute top-[35px] left-0 py-2 bg-white rounded shadow-lg border border-gray-200 text-base`}
-                    >
-                        <div className=" border-b border-gray-300">
-                            <div className="py-3 px-4 flex  hover:bg-gray-100">
-                                <input id="saved-pages" type="checkbox" className="w-4 cursor-pointer" />
-                                <label
-                                    htmlFor="saved-pages"
-                                    className="whitespace-nowrap pl-4  cursor-pointer"
-                                >
-                                    My saved pages
-                                </label>
-                            </div>
-                        </div>
-
-                        <div className="">
-                            {userFocus ? (
-                                <div className="flex flex-col gap-3 p-4">
-                                    <div className="relative group">
-                                        <label
-                                            htmlFor="name"
-                                            className={`absolute left-4 top-[15px] px-1 group-focus-within:top-[-10px] group-focus-within:text-[13px] group-focus-within:text-blue-600 bg-white inline-block transition-all font-medium pointer-events-none ${
-                                                inputError && "text-red-500 group-focus-within:text-red-500"
-                                            }`}
-                                        >
-                                            Name*
-                                        </label>
-                                        <input
-                                            onChange={(e) => {
-                                                setCategoryNameValue(e.target.value);
-                                                e.target.value.trim().length > 0
-                                                    ? setInputError(false)
-                                                    : submit && setInputError(true);
-                                            }}
-                                            ref={inputRef}
-                                            type="text"
-                                            id="name"
-                                            className={`px-4  border border-gray-200  [&:hover:not(:focus)]:border-gray-700  focus:outline-blue-600 focus:outline-2 rounded max-w-[168px] leading-[50px] ${
-                                                inputError &&
-                                                "border-red-500  border-2 focus:outline-red-500 [&:hover:not(:focus)]:border-red-500"
-                                            }`}
-                                        />
-                                    </div>
-                                    <div className="flex justify-end">
-                                        <button
-                                            onClick={() => {
-                                                addCategory(categoryNameValue);
-                                                setSubmit(true);
-                                            }}
-                                            className="text-sm font-medium text-blue-500 leading-[30px] px-2 hover:bg-blue-50 rounded"
-                                        >
-                                            Done
-                                        </button>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div
-                                    onClick={() => {
-                                        setUserFocus(true);
-                                    }}
-                                    className="py-3 px-4 flex items-center  border-b border-gray-300 hover:bg-gray-100 cursor-pointer"
-                                >
-                                    <BsPlusLg size="16" />
-                                    <div className="whitespace-nowrap pl-4">New Collection</div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
+                <Bookmark />
             </div>
+
+            {/* Page navigator */}
+            <RightSide navVisible={navVisible} />
 
             <div className="text-gray-900 mb-8">
                 <p className="mb-4">
@@ -174,7 +72,7 @@ const Article = ({ isSidebarVisible }) => {
                         >
                             <IoLinkOutline size={22} className="hover:text-blue-600" />
                         </button>
-                        <CopiedAlert showAlert={showAlert} />
+                        <CopiedAlert showAlert={showAlert} text={alertText} />
                     </div>
 
                     <p className="mb-4">The following requirements apply to YouTube Data API requests:</p>
@@ -999,8 +897,37 @@ const Article = ({ isSidebarVisible }) => {
                     </ScrollSpy>
                 </section>
             </ScrollSpy>
+
+            <div className="mt-8 md:mt-6 pb-10  flex justify-center border-b border-gray-300">
+                <TakeOpinion
+                    opinions={{ liked, disliked, clickLike, removeLike, clickDislike, removeDislike }}
+                    breadcramp={false}
+                />
+            </div>
+
+            <div className="pt-5">
+                <div className="flex items-center gap-1">
+                    <h2 className="text-gray-800 text-2xl">Recommended for you</h2>
+                    <div className="relative p-2 rounded-full hover:bg-gray-200 flex items-center cursor-pointer group">
+                        <AiOutlineExclamationCircle size={18} className="text-gray-800" />
+                        <div className="tooltip top-[-30px] translate-x-[-35%] group-hover:block">
+                            About recommendations
+                        </div>
+                    </div>
+                </div>
+
+                <div className="inline-flex flex-col items-start w-full md:w-[250px] p-5 mt-4 rounded border border-gray-200 hover:shadow-[0_0_4px_rgba(0,0,0,.3)]">
+                    <a href="list" className="text-blue-600 mb-1 font-medium">
+                        Videos: list
+                    </a>
+                    <p className="text-sm mb-5 text-gray-900">
+                        Lets your application retrieve YouTube content while also...
+                    </p>
+                    <p className="text-sm text-gray-500">Updated Nov 4, 2022</p>
+                </div>
+            </div>
         </article>
     );
 };
 
-export default Article;
+export default ReferenceArticle;

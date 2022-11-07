@@ -7,7 +7,7 @@ const CookiesAlert = () => {
         <div
             className={`${
                 isOpen ? "block" : "hidden"
-            } fixed bottom-6 left-6 p-6 bg-gray-900  text-sm rounded max-w-[540px]`}
+            } fixed bottom-6 left-6 z-[300] p-6 bg-gray-900  text-sm rounded max-w-[540px]`}
         >
             <p className="mb-6 text-gray-300">
                 This site uses cookies from Google to deliver its services and to analyze traffic.

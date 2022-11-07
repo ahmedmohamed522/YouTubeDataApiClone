@@ -1,0 +1,43 @@
+export const referencePageData = {
+    Overview: [],
+    Activities: ["Overview", "list"],
+    Captions: ["Overview", "list", "insert", "update", "download", "delete"],
+    ChannelBanners: ["Overview", "list"],
+    Channels: ["Overview", "list", "update"],
+    ChannelSections: ["Overview", "list", "insert", "update", "download", "delete"],
+    Comments: ["Overview", "list", "insert", "update", "download", "delete"],
+    CommentThreads: ["Overview", "list", "insert", "update", "download", "delete"],
+    C18nLanguages: ["Overview", "list", "insert", "update", "download", "delete"],
+    C18nRegions: ["Overview", "list", "insert", "update", "download", "delete"],
+    Cembers: ["Overview", "list", "insert", "update", "download", "delete"],
+    CembershipLevels: ["Overview", "list", "insert", "update", "download", "delete"],
+    playlistItems: ["Overview", "list", "insert", "update", "download", "delete"],
+    channelSections: ["Overview", "list", "insert", "update", "download", "delete"],
+    playlists: ["Overview", "list", "insert", "update", "download", "delete"],
+    search: ["Overview", "list", "insert", "update", "download", "delete"],
+    subscriptions: ["Overview", "list", "insert", "update", "download", "delete"],
+    VideoAbuseReportReasons: ["Overview", "list", "insert", "update", "download", "delete"],
+    VideoCategories: ["Overview", "list", "insert", "update", "download", "delete"],
+    Videos: ["Overview", "list", "insert", "update", "download", "delete"],
+    Watermarks: ["Overview", "list", "insert", "update", "download", "delete"],
+    YouTubeDataAPIErrors: ["Overview", "list", "insert", "update", "download", "delete"],
+};
+
+export let savedPages = ["My saved pages"];
+export const referencePageSections = {
+    "Calling the API": [],
+    "Resource types": [
+        "Activities",
+        "Captions",
+        "ChannelBanners",
+        "ChannelSections",
+        "Channels",
+        "CommentThreads",
+        ,
+        "Comments",
+        "GuideCategories",
+        "I18nLanguages",
+        "I18nRegions",
+        "Members",
+    ],
+};

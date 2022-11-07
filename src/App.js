@@ -1,30 +1,35 @@
-import Article from "./components/article/Article";
-import BottomNav from "./components/BottomNav";
-import TopNav from "./components/TopNav";
-import Sidebar from "./components/sidebar/Sidebar";
+import BottomNav from "./components/Navbar/BottomNav";
+import TopNav from "./components/Navbar/TopNav";
 import { createPortal } from "react-dom";
 import CookiesAlert from "./components/CookiesAlert";
-import RightSide from "./components/RightSide";
 import { useState } from "react";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Guides from "./pages/Guides";
+import References from "./pages/References";
+import Samples from "./pages/Samples";
+import Support from "./pages/Support";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-    const [isSidebarVisible, setIsSidebarVisible] = useState(true);
     const [navVisible, setNavVisible] = useState(false);
-    const sidebarHandler = (isVisible) => {
-        setIsSidebarVisible(isVisible);
-    };
     const getScrollDir = (scrollDir) => {
         setNavVisible(scrollDir === "down");
     };
+
     return (
         <div>
             <TopNav />
             <BottomNav scrollDirHandler={getScrollDir} />
-            <main className="flex relative  md:pt-[121px] pt-[52px] pr-6 xl:pr-0 bg-[#e8eaed]">
-                <Sidebar sidebarHandler={sidebarHandler} navVisible={navVisible} />
-                <Article isSidebarVisible={isSidebarVisible} />
-                <RightSide navVisible={navVisible} />
-            </main>
+            <Routes>
+                <Route element={<Home navVisible={navVisible} />} path="/home" />
+                <Route element={<Guides navVisible={navVisible} />} path="/guides" />
+                <Route element={<References navVisible={navVisible} />} path="/references" />
+                <Route element={<Samples navVisible={navVisible} />} path="/samples" />
+                <Route element={<Support navVisible={navVisible} />} path="/support" />
+            </Routes>
+
+            <Footer />
             {createPortal(<CookiesAlert />, document.getElementById("modal"))}
         </div>
     );

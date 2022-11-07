@@ -6,7 +6,7 @@ const SidebarItem = ({ text, list }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="w-[94%]">
+        <div className="w-[100%] md:w-[94%]">
             <div className={` relative  cursor-pointer`}>
                 <MdArrowRight
                     onClick={() => {
@@ -18,7 +18,7 @@ const SidebarItem = ({ text, list }) => {
                 <a
                     className={`${
                         text === "Overview"
-                            ? "inline-block text-[12px] font-bold font-[roboto] pl-6 pr-2 py-1 bg-[#e8f0fe] text-[#185abc] hover:text-[#1a73e8] rounded-r-full w-[94%] mr-2"
+                            ? "inline-block text-[12px] font-bold font-[roboto] pl-6 pr-2 py-1 bg-[#e8f0fe] text-[#185abc] hover:text-[#1a73e8] rounded-r-full w-[99%] md:w-[94%] mr-2"
                             : "sidebar-item pl-6"
                     }`}
                     href="https://developers.google.com/youtube/v3/docs#resource-types"

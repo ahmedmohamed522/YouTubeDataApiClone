@@ -15,7 +15,7 @@ a {
 }
 
 .nav-link {
-    @apply inline-block relative text-white hover:text-white/70 text-[14px] mx-[18px] py-3 font-medium transition before:w-[86%] before:h-[5px] before:hover:bg-white/70 before:rounded-full before:absolute before:left-[7%] before:bottom-[-2px];
+    @apply flex md:inline-block items-center justify-between grow  relative  md:text-white md:hover:text-white/70 md:before:hover:bg-white/70 text-[13px] md:text-sm pl-[24px] pr-[16px] md:px-0  md:mx-[18px] py-[14px] font-medium transition before:w-[86%] before:h-[5px]  before:rounded-full before:absolute before:left-[7%] before:bottom-[-2px] border-b md:border-none border-gray-200;
 }
 .sidebar-item {
     @apply text-[#202124] text-[13px] hover:bg-gray-100 block   py-1 pr-2   rounded-r-full;
@@ -40,4 +40,7 @@ a {
 }
 .active-scroll-spy {
     @apply text-blue-600 font-medium;
+}
+.sidebar-menu {
+    @apply absolute w-full h-full  top-0 pt-[52px] md:pt-[90px]  pb-[100px] md:pb-11  pr-2 overflow-y-auto  scrollbar-thin  scrollbar-thumb-[#dee0e1] scrollbar-track-gray-100 scrollbar-w-[10px];
 }
