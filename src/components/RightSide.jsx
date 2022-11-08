@@ -4,8 +4,6 @@ import { BiChevronDown, BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsChevronUp } from "react-icons/bs";
 import ScrollSpy from "react-ui-scrollspy";
 
-import { referencePageSections as sections } from "../data/data";
-
 const RightSide = ({ navVisible }) => {
     const clickHandler = (e) => {
         document.querySelectorAll("a").forEach((e) => e.classList.remove("active-scroll-spy"));

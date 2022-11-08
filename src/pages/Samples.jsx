@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SampleArticle from "../components/article/articles/SampleArticle";
 import License from "../components/License";
 import Sidebar from "../components/sidebar/Sidebar";
 
@@ -12,7 +13,7 @@ const Samples = ({ navVisible }) => {
     return (
         <main className="flex flex-col relative  md:pt-[121px] pt-[52px] pr-0 md:pr-6 xl:pr-0 bg-[#e8eaed]">
             <Sidebar sidebarHandler={sidebarHandler} navVisible={navVisible} />
-            <div className="ml-[300px]">Samples</div>
+            <SampleArticle isSidebarVisible={isSidebarVisible} navVisible={navVisible} />
             <License />
         </main>
     );
