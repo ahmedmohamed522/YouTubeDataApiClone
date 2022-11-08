@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { BiChevronDown, BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsChevronUp } from "react-icons/bs";
-import ScrollSpy from "react-ui-scrollspy";
+import ScrollspyNav from "react-scrollspy-nav";
 
 const RightSide = ({ navVisible }) => {
     const clickHandler = (e) => {
@@ -36,11 +36,28 @@ const RightSide = ({ navVisible }) => {
                         openPageNav ? "h-auto" : "h-[160px]"
                     }  xl:h-[200px] overflow-hidden xl:overflow-auto  xl:scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100`}
                 >
-                    <ScrollSpy>
+                    <ScrollspyNav
+                        scrollTargetIds={[
+                            "call-api",
+                            "resources-types",
+                            "activities",
+                            "captions",
+                            "channel-banners",
+                            "channel-sections",
+                            "channels",
+                            "comment-threads",
+                            "comments",
+                            "guide-categories",
+                        ]}
+                        offset={150}
+                        activeNavClass="is-active"
+                        scrollDuration="300"
+                        headerBackground="true"
+                    >
                         <a
                             href="#call-api"
                             onClick={clickHandler}
-                            data-to-scrollspy-id="call-api"
+                            data-to-scrollspy-id=""
                             className="mb-1 hover:text-blue-600 "
                         >
                             Calling The API
@@ -48,7 +65,7 @@ const RightSide = ({ navVisible }) => {
                         <a
                             href="#resources-types"
                             onClick={clickHandler}
-                            data-to-scrollspy-id="resources-types"
+                            data-to-scrollspy-id=""
                             className="mb-1 hover:text-blue-600"
                         >
                             Resources type
@@ -56,7 +73,7 @@ const RightSide = ({ navVisible }) => {
                         <a
                             href="#activities"
                             onClick={clickHandler}
-                            data-to-scrollspy-id="activities"
+                            data-to-scrollspy-id=""
                             className="mb-1 ml-4  hover:text-blue-600"
                         >
                             Activities
@@ -64,7 +81,7 @@ const RightSide = ({ navVisible }) => {
                         <a
                             href="#captions"
                             onClick={clickHandler}
-                            data-to-scrollspy-id="captions"
+                            data-to-scrollspy-id=""
                             className="mb-1 ml-4  hover:text-blue-600"
                         >
                             captions
@@ -72,7 +89,7 @@ const RightSide = ({ navVisible }) => {
                         <a
                             href="#channel-banners"
                             onClick={clickHandler}
-                            data-to-scrollspy-id="channel-banners"
+                            data-to-scrollspy-id=""
                             className="mb-1 ml-4 hover:text-blue-600 "
                         >
                             ChannelBanners
@@ -80,7 +97,7 @@ const RightSide = ({ navVisible }) => {
                         <a
                             href="#channel-sections"
                             onClick={clickHandler}
-                            data-to-scrollspy-id="channel-sections"
+                            data-to-scrollspy-id=""
                             className="mb-1 ml-4  hover:text-blue-600"
                         >
                             ChannelSections
@@ -88,7 +105,7 @@ const RightSide = ({ navVisible }) => {
                         <a
                             href="#channels"
                             onClick={clickHandler}
-                            data-to-scrollspy-id="channels"
+                            data-to-scrollspy-id=""
                             className="mb-1 ml-4 hover:text-blue-600 "
                         >
                             Channels
@@ -96,7 +113,7 @@ const RightSide = ({ navVisible }) => {
                         <a
                             href="#comment-threads"
                             onClick={clickHandler}
-                            data-to-scrollspy-id="comment-threads"
+                            data-to-scrollspy-id=""
                             className="mb-1 ml-4 hover:text-blue-600 "
                         >
                             CommentThreads
@@ -104,7 +121,7 @@ const RightSide = ({ navVisible }) => {
                         <a
                             href="#comments"
                             onClick={clickHandler}
-                            data-to-scrollspy-id="comments"
+                            data-to-scrollspy-id=""
                             className="mb-1 ml-4 hover:text-blue-600 "
                         >
                             Comments
@@ -112,12 +129,12 @@ const RightSide = ({ navVisible }) => {
                         <a
                             href="#guide-categories"
                             onClick={clickHandler}
-                            data-to-scrollspy-id="guide-categories"
+                            data-to-scrollspy-id=""
                             className="mb-1 ml-4  hover:text-blue-600"
                         >
                             GuideCategories
                         </a>
-                    </ScrollSpy>
+                    </ScrollspyNav>
                 </div>
 
                 <div

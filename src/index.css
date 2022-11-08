@@ -38,7 +38,7 @@ a {
 .table-cols {
     @apply grid-cols-[minmax(85px,max-content)_minmax(125px,max-content)_1fr];
 }
-.active-scroll-spy {
+.is-active {
     @apply text-blue-600 font-medium;
 }
 .sidebar-menu {

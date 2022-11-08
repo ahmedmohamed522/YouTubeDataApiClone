@@ -1,13 +1,9 @@
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { IoLinkOutline } from "react-icons/io5";
-import ScrollSpy from "react-ui-scrollspy";
 import { useEffect } from "react";
 import { useLike } from "../../../hooks/useLike";
 import TakeOpinion from "../../TakeOpinion";
 import Breadcramp from ".././Breadcramp";
 import RightSide from "../../RightSide";
-
-import CopiedAlert from ".././CopiedAlert";
 
 import { useSavePagesAndCreateCategories } from "../../../hooks/useSavePagesAndCreateCategories";
 import Bookmark from "../Bookmark";
